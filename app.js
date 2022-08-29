@@ -3,6 +3,7 @@ const PORT = 3000;
 const app = express();
 const cors = require ('cors');
 const mongoose = require('mongoose');
+const blogRouter = require('./routes/BlogRoutes');
 
 //mongoose configuration
 mongoose.connect(
@@ -22,6 +23,7 @@ mongoose.connect(
 
 app.use(express.json())
 app.use(cors())
+app.use('/api/blogs', blogRouter);
 
 app.get('/', (req, res) =>{
   res.status(200).send('<h1>HELLO THERE</h1>')
